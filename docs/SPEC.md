@@ -25,7 +25,7 @@ Deliver a **working testnet (Sepolia) flow** that proves the core value and is g
 **A) Starknet Contracts (Cairo + Scarb)**
 - `Passport721`: product passport NFT/digital twin  
 - `LoyaltyPoints`: non-transferable points ledger (per merchant)  
-- `RewardsVaultUSDC`: USDC reward pool + redeem (optional; phase 1.2)
+- `RewardsVault`: Multi-token reward pool (USDC, STRK) + redeem (optional; phase 1.2)
 
 **B) Enlivora Cloud (Backend API + DB)**
 - merchant/store records (Shopify installs)
@@ -192,26 +192,26 @@ enlivora/
 
 ---
 
-### 3.3 `RewardsVaultUSDC` (Phase 1.2, Optional)
+### 3.3 `RewardsVault` (Phase 1.2, Optional)
 
-**Purpose:** Merchant funds a USDC pool; customers redeem USDC with signed permits.
+**Purpose:** Merchant funds a reward pool (USDC for stability, STRK for gas/ecosystem alignment). Customers redeem points for these tokens via signed permits.
 
 **Storage**
-- `usdc_token_address: ContractAddress`
-- `merchant_pool_balance: Map<merchantId, u256>`
-- `daily_cap: Map<merchantId, u256>` *(or global cap)*
+- `supported_tokens: Map<ContractAddress, bool>` (whitelist: USDC, STRK)
+- `merchant_pool_balance: Map<(merchantId, tokenAddr), u256>`
+- `daily_cap: Map<(merchantId, tokenAddr), u256>`
 - `used_nonces: Map<(merchantId, userAddr), u256>`
 - `merchant_signer: Map<merchantId, felt252>`
 
 **Functions**
-- `deposit(merchantId, amount)` — `IERC20.transferFrom(merchant, vault, amount)`
-- `redeem_with_sig(merchantId, user, amount, nonce, signature)` — enforces limits/cooldowns
-- `withdraw(merchantId, amount)` — only merchant admin
+- `deposit(merchantId, tokenAddr, amount)` — `IERC20.transferFrom(merchant, vault, amount)`
+- `redeem_with_sig(merchantId, tokenAddr, user, amount, nonce, signature)`
+- `withdraw(merchantId, tokenAddr, amount)` — only merchant admin
 
 **Events**
-- `RewardsDeposited(merchantId, amount)`
-- `RewardsRedeemed(merchantId, user, amount)`
-- `RewardsWithdrawn(merchantId, amount)`
+- `RewardsDeposited(merchantId, token, amount)`
+- `RewardsRedeemed(merchantId, user, token, amount)`
+- `RewardsWithdrawn(merchantId, token, amount)`
 
 ---
 
@@ -295,9 +295,9 @@ enlivora/
 - [ ] `refunds/*` webhook → debit points
 - [ ] Basic admin UI view points history
 
-### Phase 1.2 — USDC Rewards (Optional)
-- [ ] Implement `RewardsVaultUSDC`
-- [ ] Merchant deposit flow
+### Phase 1.2 — Rewards (USDC / STRK)
+- [ ] Implement `RewardsVault` (Multi-Token)
+- [ ] Merchant deposit flow (support both tokens)
 - [ ] Customer redeem flow + limits
 
 ---
@@ -308,7 +308,7 @@ enlivora/
 - Verify/claim pages must show clear **anti-phishing** messaging and official domain
 - Verify Shopify webhooks using HMAC signature
 - Refund events must reverse points (or apply cooldown)
-- USDC redeem must include:
+- Reward redeem (USDC/STRK) must include:
   - daily/monthly cap
   - cooldown period
   - nonces to prevent replay
