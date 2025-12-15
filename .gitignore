@@ -1,0 +1,42 @@
+# General
+.DS_Store
+*.log
+logs
+*.tmp
+*.temp
+
+# Node.js (Backend, Frontend, Shopify)
+node_modules/
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+dist/
+build/
+.cache/
+
+# Environment Variables (Critical Security)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+
+# Starknet / Scarb (Contracts)
+contracts/target/
+contracts/*.json
+
+# Next.js (Frontend)
+.next/
+out/
+
+# Shopify App
+.shopify/
+shopify-app/prisma/migrations/
+*.sqlite
+
+# IDEs
+.vscode/
+.idea/
+*.swp
