@@ -1,5 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import webhookRouter from './routes/webhooks_shopify';
+import { StarknetService } from './services/starknet';
 
 dotenv.config();
 
@@ -7,6 +9,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
+
+// Register Routes
+app.use('/webhooks', webhookRouter);
 
 app.get('/', (req, res) => {
   res.send('Enlivora Cloud Backend API');
