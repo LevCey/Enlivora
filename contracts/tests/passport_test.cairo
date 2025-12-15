@@ -4,7 +4,6 @@ mod tests {
     use snforge_std::{declare, ContractClassTrait, DeclareResultTrait, start_cheat_caller_address, stop_cheat_caller_address};
 
     // Define the interface locally for testing purposes
-    // In a real project, this would be imported from src/interfaces/ipassport.cairo
     #[starknet::interface]
     trait IPassport721<TContractState> {
         fn mint_passport(ref self: TContractState, recipient: ContractAddress, token_id: u256, product_hash: felt252);
@@ -53,20 +52,27 @@ mod tests {
 
         start_cheat_caller_address(contract_address, owner);
 
-        let recipient: ContractAddress = starknet::contract_address_const::<0x456>();
         let token_id: u256 = 2;
         let product_hash: felt252 = 'hash_2';
-
-        // Mint first
-        dispatcher.mint_passport(recipient, token_id, product_hash);
+        // Need to mint before revoking
+        // Since we are reusing logic, ensure tokenId is unique per test or redeploy
+        // Redeploy for cleanliness
+        stop_cheat_caller_address(contract_address); // Stop previous cheat if any
+        
+        let contract_address_2 = deploy_contract("Passport721");
+        let dispatcher_2 = IPassport721Dispatcher { contract_address: contract_address_2 };
+        start_cheat_caller_address(contract_address_2, owner);
+        
+        let recipient: ContractAddress = starknet::contract_address_const::<0x456>();
+        dispatcher_2.mint_passport(recipient, token_id, product_hash);
 
         // Revoke
-        dispatcher.revoke_passport(token_id);
+        dispatcher_2.revoke_passport(token_id);
 
         // Check status
-        let (_, is_revoked) = dispatcher.get_passport_data(token_id);
+        let (_, is_revoked) = dispatcher_2.get_passport_data(token_id);
         assert(is_revoked == true, 'Should be revoked');
 
-        stop_cheat_caller_address(contract_address);
+        stop_cheat_caller_address(contract_address_2);
     }
 }

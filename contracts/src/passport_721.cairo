@@ -1,10 +1,10 @@
 #[starknet::contract]
 mod Passport721 {
     use starknet::ContractAddress;
-    use starknet::get_caller_address;
     use openzeppelin::token::erc721::ERC721Component;
     use openzeppelin::introspection::src5::SRC5Component;
     use openzeppelin::access::ownable::OwnableComponent;
+    use starknet::storage::{Map, StoragePointerReadAccess, StoragePointerWriteAccess};
 
     component!(path: ERC721Component, storage: erc721, event: ERC721Event);
     component!(path: SRC5Component, storage: src5, event: SRC5Event);
@@ -18,6 +18,9 @@ mod Passport721 {
     impl ERC721InternalImpl = ERC721Component::InternalImpl<ContractState>;
     impl OwnableInternalImpl = OwnableComponent::InternalImpl<ContractState>;
 
+    // Required for v0.20.0+
+    impl ERC721HooksImpl of ERC721Component::ERC721HooksTrait<ContractState> {}
+
     #[storage]
     struct Storage {
         #[substorage(v0)]
@@ -28,8 +31,8 @@ mod Passport721 {
         ownable: OwnableComponent::Storage,
         
         // Custom storage
-        token_product_hash: LegacyMap<u256, felt252>,
-        token_revoked: LegacyMap<u256, bool>,
+        token_product_hash: Map<u256, felt252>,
+        token_revoked: Map<u256, bool>,
     }
 
     #[event]
@@ -104,12 +107,5 @@ mod Passport721 {
             let revoked = self.token_revoked.read(token_id);
             (hash, revoked)
         }
-        
-        // Claim logic: simpler for MVP. 
-        // In this version, the 'recipient' in mint is the merchant's escrow wallet.
-        // The customer 'claims' it by having the merchant transfer it to them,
-        // OR we can add a 'claim_with_signature' here later.
-        // For now, we rely on standard ERC721 transferFrom for the claim process 
-        // (initiated by the backend or the user if they hold a temporary key).
     }
 }

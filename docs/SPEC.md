@@ -277,21 +277,22 @@ enlivora/
 ## 6) Development Order (Practical Checklist)
 
 ### Phase 0 (Today) — Grant-ready PoC
-- [ ] Implement `Passport721` + tests
+- [x] Implement `Passport721` + tests
 - [ ] Deploy to Sepolia (record contract address)
 - [ ] Mint 1 demo token via script
-- [ ] Build a minimal verify page reading `owner/status/product_hash`
-- [ ] Add claim button (wallet connect + transfer)
+- [x] Build a minimal verify page reading `owner/status/product_hash`
+- [x] Add claim button (wallet connect + transfer)
 - [ ] Record a 2–3 minute demo video + update README
 
 ### Phase 1 (MVP) — Shopify Integration
-- [ ] Shopify app OAuth install
-- [ ] Products list + Enable Passport
-- [ ] Backend endpoint `enable-passport`
+- [x] Shopify app OAuth install (Skeleton)
+- [x] Products list + Enable Passport (UI + Backend Logic)
+- [x] Backend endpoint `enable-passport`
 - [ ] Theme block “Verify Passport” link
 
 ### Phase 1.1 — Points (Onchain)
-- [ ] `orders/paid` webhook → credit points
+- [x] Implement `LoyaltyPoints` + tests
+- [x] `orders/paid` webhook → credit points
 - [ ] `refunds/*` webhook → debit points
 - [ ] Basic admin UI view points history
 

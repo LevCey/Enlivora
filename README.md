@@ -1,35 +1,65 @@
 # Enlivora Commerce Pass
 
-Enlivora Commerce Pass is a Starknet-native infrastructure that enables Shopify and WooCommerce merchants to issue digital product passports and onchain loyalty points. It bridges traditional e-commerce with blockchain transparency without disrupting the user checkout experience.
+Enlivora Commerce Pass is a Starknet-native infrastructure designed to bridge traditional e-commerce with blockchain transparency. It enables Shopify and WooCommerce merchants to issue digital product passports (NFTs) and onchain loyalty points without disrupting the existing user checkout experience.
 
-## Overview
+## Problem & Solution
 
-This repository contains the full monorepo implementation of the Enlivora MVP. The system consists of three main components:
+Premium boutiques and Direct-to-Consumer (DTC) brands face significant challenges in scaling due to lack of trust in resale markets and fragmented loyalty systems.
 
-1.  **Starknet Smart Contracts:** Manages product authenticity (NFTs) and loyalty points.
-2.  **Enlivora Cloud (Backend):** A Node.js middleware that orchestrates interactions between Shopify webhooks and the Starknet blockchain.
-3.  **Shopify App:** An embedded admin dashboard for merchants to manage passports and view loyalty data.
+*   **Problem:** Buyers hesitate to purchase premium items due to authenticity concerns ("Is this real?"). Brands lose visibility and control once a product enters the secondary market.
+*   **Solution:** Enlivora creates an onchain "Digital Twin" for each physical product. This passport proves authenticity and ownership history. Additionally, an onchain loyalty system rewards customers with non-transferable points that can be redeemed for USDC or STRK, creating a verifiable and portable rewards ecosystem.
+
+## Key Features
+
+*   **Product Passport (ERC-721):** A mintable digital asset linked to physical inventory. Supports ownership transfer and revocation by the issuer.
+*   **Loyalty Ledger (Non-transferable Token):** An onchain points system where merchants can credit points based on fiat purchases (e.g., 10 points per $1).
+*   **Shopify Integration:** A native Shopify App that listens to `orders/paid` webhooks to automate minting and point crediting.
+*   **Multi-Token Rewards:** A flexible vault system allowing customers to redeem points for stablecoins (USDC) or network tokens (STRK).
+*   **Gasless Experience:** Designed with Account Abstraction in mind to minimize Web3 friction for end-users.
+
+## System Architecture
+
+The system operates as a middleware between the Web2 e-commerce platform and the Starknet Layer 2 validity rollup.
+
+```text
++----------------+       +--------------------+       +-------------------------+
+|  E-Commerce    |       |   Enlivora Cloud   |       |    Starknet (L2)        |
+| (Shopify/Woo)  |       |   (Node.js API)    |       |                         |
++----------------+       +--------------------+       +-------------------------+
+|                |       |                    |       |                         |
+|  Order Paid    | ----> |  Webhook Handler   | ----> |  LoyaltyPoints.cairo    |
+|   (Webhook)    |       |   (Calculate Pts)  |       |    (Credit Points)      |
+|                |       |                    |       |                         |
+|  "Enable Pass" | ----> |  Mint Service      | ----> |  Passport721.cairo      |
+|   (Admin UI)   |       |   (Sign Tx)        |       |    (Mint Token)         |
+|                |       |                    |       |                         |
++----------------+       +--------------------+       +-------------------------+
+                                   |
+                                   v
+                         +--------------------+
+                         |  Customer Frontend |
+                         | (Next.js / Wallet) |
+                         +--------------------+
+```
 
 ## Project Structure
 
-*   `contracts/`: Starknet smart contracts (Cairo) managed with Scarb.
-    *   `Passport721`: ERC721-based product digital twin.
-    *   `LoyaltyPoints`: Non-transferable token system for customer rewards.
-*   `backend/`: Node.js/Express API service.
-    *   Handles Shopify OAuth and Webhooks (`orders/paid`).
-    *   Manages Starknet transaction signing (Minting/Crediting).
-*   `shopify-app/`: Remix-based Shopify Admin application.
-*   `frontend-passport/`: Next.js application for the customer-facing "Verify & Claim" interface.
-*   `docs/`: Project specifications and grant proposals.
+This repository follows a monorepo structure:
+
+*   `contracts/`: Starknet smart contracts written in Cairo (managed with Scarb).
+*   `backend/`: Node.js/Express service for off-chain logic and transaction signing.
+*   `shopify-app/`: Remix-based embedded application for the merchant admin panel.
+*   `frontend-passport/`: Next.js application for customers to verify and claim their digital assets.
+*   `docs/`: Detailed specifications and grant proposals.
 
 ## Prerequisites
 
-*   **Node.js**: v18 or higher
-*   **Scarb**: Cairo package manager (for contract compilation)
-*   **Starkli**: Starknet CLI tool (for deployment)
-*   **Starknet Wallet**: Argent X or Braavos (for testing claims)
+*   **Node.js**: v18.0.0 or higher
+*   **Scarb**: Cairo package manager (v2.4+)
+*   **Starkli**: Starknet CLI tool
+*   **Starknet Wallet**: Argent X or Braavos
 
-## Installation & Setup
+## Installation & Development
 
 ### 1. Smart Contracts
 
@@ -41,23 +71,23 @@ scarb build
 scarb test
 ```
 
-To deploy to the Sepolia testnet, configure your wallet in `scripts/deploy_sepolia.sh` and run the script.
+To deploy to the Sepolia testnet, ensure you have a funded Starknet account and configure the deployment scripts in `backend/scripts/`.
 
 ### 2. Backend Service
 
-The backend requires a connection to both Shopify (API Keys) and Starknet (RPC & Private Key).
+The backend acts as the bridge. It requires configuration for both the blockchain provider and the e-commerce platform.
 
 ```bash
 cd backend
 cp .env.example .env
-# Edit .env with your specific configuration
+# Edit .env with your Starknet Private Key and RPC URL
 npm install
 npm run dev
 ```
 
 ### 3. Frontend Applications
 
-Install dependencies for the Passport claim interface and the Shopify app.
+Install dependencies for the customer-facing interface and the merchant dashboard.
 
 ```bash
 # Passport Interface
@@ -71,24 +101,11 @@ npm install
 npm run dev
 ```
 
-## Architecture Details
-
-### Product Passport Flow
-1.  Merchant clicks "Enable Passport" in the Shopify Admin.
-2.  Backend generates a unique token ID and mints a `Passport721` NFT on Starknet to the merchant's escrow.
-3.  A unique claim link is generated for the product.
-4.  Customer receives the product, scans the QR code/link, and claims the NFT to their personal wallet.
-
-### Loyalty System
-1.  Customer completes a purchase on Shopify.
-2.  Shopify sends an `orders/paid` webhook to the Enlivora Backend.
-3.  Backend calculates points (e.g., 10 points per $1) and calls the `credit_points` function on the `LoyaltyPoints` contract.
-
 ## Documentation
 
-For detailed technical specifications and the project roadmap, please refer to the `docs/` directory:
+For a deeper dive into the technical implementation and roadmap, please refer to the `docs/` directory:
 *   [Implementation Spec (MVP)](docs/SPEC.md)
-*   [Grant One-Pager](docs/Grant_One-Pager.md)
+*   [Grant Proposal One-Pager](docs/Grant_One-Pager.md)
 
 ## License
 
