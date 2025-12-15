@@ -46,7 +46,7 @@ export class StarknetService {
      */
     async mintPassport(tokenId: string, productHash: string) {
         try {
-            console.log(`🚀 Minting TokenID: ${tokenId} with Hash: ${productHash}...`);
+            console.log(`Minting TokenID: ${tokenId} with Hash: ${productHash}...`);
 
             // Connect to contract
             const contract = new Contract(contractAbi, contractAddress, provider);
@@ -61,16 +61,16 @@ export class StarknetService {
                 productHash
             );
 
-            console.log("✅ Transaction sent:", tx.transaction_hash);
+            console.log("Transaction sent:", tx.transaction_hash);
             
             // Wait for transaction acceptance (optional, depends on UX speed requirements)
             await provider.waitForTransaction(tx.transaction_hash);
-            console.log("✅ Transaction confirmed on L2");
+            console.log("Transaction confirmed on L2");
 
             return tx.transaction_hash;
 
         } catch (error) {
-            console.error("❌ Minting failed:", error);
+            console.error("Minting failed:", error);
             throw error;
         }
     }

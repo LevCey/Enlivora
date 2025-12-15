@@ -2,7 +2,7 @@
 
 Starknet-native Product Passport + Loyalty Points system for Shopify/WooCommerce merchants.
 
-## 📂 Project Structure
+## Project Structure
 
 - **`contracts/`**: Starknet smart contracts (Cairo) managed with Scarb.
   - `src/passport_721.cairo`: The main Product Passport NFT contract.
@@ -10,7 +10,7 @@ Starknet-native Product Passport + Loyalty Points system for Shopify/WooCommerce
 - **`shopify-app/`**: Shopify App boilerplate (Remix/Node).
 - **`frontend-passport/`**: Next.js app for the customer "Verify & Claim" pages.
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Contracts (Starknet)
 
@@ -44,7 +44,7 @@ npm run dev
 
 The server will run at `http://localhost:3000`.
 
-## 📍 Roadmap Phase 0 (Current)
+## Roadmap Phase 0 (Current)
 
 - [x] Project scaffolding
 - [x] Passport721 Contract implementation
