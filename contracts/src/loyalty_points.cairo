@@ -3,7 +3,7 @@ mod LoyaltyPoints {
     use starknet::ContractAddress;
     use openzeppelin::token::erc20::ERC20Component;
     use openzeppelin::access::ownable::OwnableComponent;
-    use openzeppelin::token::erc20::interface::IERC20Metadata;
+    use openzeppelin::token::erc20::interface::IERC20;
 
     component!(path: ERC20Component, storage: erc20, event: ERC20Event);
     component!(path: OwnableComponent, storage: ownable, event: OwnableEvent);
@@ -15,9 +15,15 @@ mod LoyaltyPoints {
     // We DO NOT expose transfer/transferFrom to make it non-transferable (SBT-like)
     #[abi(embed_v0)]
     impl ERC20MetadataImpl = ERC20Component::ERC20MetadataImpl<ContractState>;
+    
+    // Internal use of full ERC20 logic (balance_of, etc.)
+    impl ERC20Impl = ERC20Component::ERC20Impl<ContractState>;
 
     impl ERC20InternalImpl = ERC20Component::InternalImpl<ContractState>;
     impl OwnableInternalImpl = OwnableComponent::InternalImpl<ContractState>;
+
+    // Required for v0.20.0+
+    impl ERC20HooksImpl of ERC20Component::ERC20HooksTrait<ContractState> {}
 
     #[storage]
     struct Storage {
