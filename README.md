@@ -52,6 +52,13 @@ This repository follows a monorepo structure:
 *   `frontend-passport/`: Next.js application for customers to verify and claim their digital assets.
 *   `docs/`: Detailed specifications and grant proposals.
 
+## Deployed Contracts (Sepolia Testnet)
+
+| Contract | Address | Explorer Link |
+| :--- | :--- | :--- |
+| **LoyaltyPoints (ELP)** | `0x0733ceef104572b040eef659f697a2d4931c13ac1446b103f0e0a9c4b7613841` | [StarkScan](https://sepolia.starkscan.co/contract/0x0733ceef104572b040eef659f697a2d4931c13ac1446b103f0e0a9c4b7613841) |
+| **Passport721 (ENL)** | `0x060691688c40f8b98fd8d23e9a2c9864ddece643cf195a095e8b9d6d54210839` | [StarkScan](https://sepolia.starkscan.co/contract/0x060691688c40f8b98fd8d23e9a2c9864ddece643cf195a095e8b9d6d54210839) |
+
 ## Prerequisites
 
 *   **Node.js**: v18.0.0 or higher
