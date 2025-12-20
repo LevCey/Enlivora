@@ -11,8 +11,8 @@ const provider = new RpcProvider({
 // Initialize Account (Merchant Admin)
 const merchantAddress = process.env.MERCHANT_ACCOUNT_ADDRESS || "";
 const privateKey = process.env.MERCHANT_PRIVATE_KEY || "";
-const contractAddress = process.env.CONTRACT_ADDRESS || "";
-const loyaltyContractAddress = process.env.LOYALTY_CONTRACT_ADDRESS || "";
+const passportContractAddress = process.env.PASSPORT_721_ADDRESS || "";
+const loyaltyContractAddress = process.env.LOYALTY_POINTS_ADDRESS || "";
 
 const account = new Account(provider, merchantAddress, privateKey);
 
@@ -63,7 +63,7 @@ export class StarknetService {
             console.log(`Minting TokenID: ${tokenId} with Hash: ${productHash}...`);
 
             // Connect to contract
-            const contract = new Contract(contractAbi, contractAddress, provider);
+            const contract = new Contract(contractAbi, passportContractAddress, provider);
             contract.connect(account);
 
             // Execute mint transaction
@@ -100,7 +100,7 @@ export class StarknetService {
             console.log(`Crediting ${amount} points to ${userAddress} for Order ${orderId}...`);
 
             if (!loyaltyContractAddress) {
-                throw new Error("LOYALTY_CONTRACT_ADDRESS not configured");
+                throw new Error("LOYALTY_POINTS_ADDRESS not configured");
             }
 
             const contract = new Contract(loyaltyAbi, loyaltyContractAddress, provider);
