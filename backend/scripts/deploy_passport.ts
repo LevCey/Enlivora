@@ -18,10 +18,9 @@ async function main() {
         throw new Error("⚠️ MERCHANT_PRIVATE_KEY or MERCHANT_ACCOUNT_ADDRESS missing in .env");
     }
 
-    // Let library choose version (likely V3 default in v6)
-    // We fixed the BigInt error by providing explicit maxFee, so auto-version might work now.
-    const account = new Account(provider, accountAddress, privateKey);
-    console.log(`🚀 Deploying with Account: ${accountAddress} (Auto Version)`);
+    // Force V3 Transaction (STRK Fee)
+    const account = new Account(provider, accountAddress, privateKey, undefined, "0x3");
+    console.log(`🚀 Deploying with Account: ${accountAddress} (Tx Version: v3/STRK)`);
 
     // 2. Read Contract Files (Sierra & CASM)
     const sierraPath = path.join(__dirname, '../../contracts/target/dev/enlivora_contracts_Passport721.contract_class.json');
@@ -50,11 +49,20 @@ async function main() {
             // Ignore error, means class not found, proceed to declare
         }
 
-        // Explicitly setting maxFee to bypass estimateFee issues with Infura
-        // Declare is expensive, using 0.01 ETH limit (10^16 wei)
+        // Explicitly setting resourceBounds for V3 transaction to bypass estimateFee issues
+        // We provide generous limits for Declare
+        const declareOptions = {
+            version: "0x3",
+            resourceBounds: {
+                l1_gas: { max_amount: '0x186A0', max_price_per_unit: '0x4A817C800' }, // 100k gas, 20 Gwei
+                l2_gas: { max_amount: '0x0', max_price_per_unit: '0x0' },
+                l1_data_gas: { max_amount: '0x0', max_price_per_unit: '0x0' } // Explicitly zeroing data gas if needed
+            }
+        };
+
         const declareResponse = await account.declare(
             { contract: sierra, casm: casm }, 
-            { maxFee: 10n ** 16n }
+            declareOptions
         );
         
         console.log(`✅ Declare Tx Hash: ${declareResponse.transaction_hash}`);
@@ -80,13 +88,22 @@ async function main() {
 async function deployInstance(account: any, provider: any, classHash: string, ownerAddress: string) {
     console.log(`🚀 Deploying Passport721 Instance from Class Hash: ${classHash}...`);
     
-    // Using 0.005 ETH limit for deploy
+    // Explicit resourceBounds for Deploy
+    const deployOptions = {
+        version: "0x3",
+        resourceBounds: {
+            l1_gas: { max_amount: '0x186A0', max_price_per_unit: '0x4A817C800' }, // 100k gas, 20 Gwei
+            l2_gas: { max_amount: '0x0', max_price_per_unit: '0x0' },
+            l1_data_gas: { max_amount: '0x0', max_price_per_unit: '0x0' }
+        }
+    };
+
     const deployResponse = await account.deploy(
         {
             classHash: classHash,
             constructorCalldata: CallData.compile([ownerAddress]) 
         },
-        { maxFee: 5n * (10n ** 15n) }
+        deployOptions
     );
 
     console.log(`✅ Deploy Tx Hash: ${deployResponse.transaction_hash}`);

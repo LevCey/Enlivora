@@ -62,7 +62,7 @@ mod Passport721 {
 
     #[constructor]
     fn constructor(ref self: ContractState, owner: ContractAddress) {
-        let name = "EnlivoraPassport";
+        let name = "Enlivora Passport";
         let symbol = "ENL";
         let base_uri = "https://api.enlivora.com/passport/";
 

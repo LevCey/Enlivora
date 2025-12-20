@@ -60,7 +60,7 @@ mod LoyaltyPoints {
 
     #[constructor]
     fn constructor(ref self: ContractState, owner: ContractAddress) {
-        let name = "Enlivora Loyalty";
+        let name = "Enlivora Loyalty Points";
         let symbol = "ELP";
         
         self.erc20.initializer(name, symbol);

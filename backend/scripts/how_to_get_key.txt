@@ -1,0 +1,18 @@
+import fs from 'fs';
+import path from 'path';
+// @ts-ignore
+import { json } from 'starknet';
+
+// Starknet.js v6 doesn't expose easy decryption for Starkli/Scarb keystore formats directly in public API sometimes.
+// But Starkli uses standard encrypt/decrypt.
+
+// Let's just try to read it. If it's encrypted, we need a library like 'eth-keyfile' or similar, 
+// but Starknet keys are different curve.
+
+console.log("To get private key from Starkli keystore:");
+console.log("1. Use 'starkli signer keystore inspect' (if available)");
+console.log("2. Or just create a NEW account with Starknet.js that prints its key, send ETH there.");
+
+// Since decrypting is hard without libraries, let's try 'starkli' again.
+// The user said 'starkli account private-key' failed.
+// Maybe 'starkli signer keystore inspect --password iamwinner keystore.json'?
