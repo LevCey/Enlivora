@@ -1,0 +1,23 @@
+<div class="enlivora-passport-verify">
+  {% if product.metafields.enlivora.passport_active %}
+    <div style="border: 1px solid #000; padding: 10px; margin: 10px 0; border-radius: 8px; background: #f9f9f9;">
+      <h3 style="margin-top: 0;">🛡️ Enlivora Digital Passport</h3>
+      <p>This product is secured with a blockchain-native digital twin.</p>
+      <a href="https://enlivora-passport.vercel.app/verify/{{ product.id }}" 
+         style="display: inline-block; background: #000; color: #fff; padding: 8px 16px; text-decoration: none; border-radius: 4px;">
+        Verify Authenticity
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Passport Verify",
+  "target": "section",
+  "templates": ["product"],
+  "settings": [
+    { "type": "color", "id": "colour", "label": "Star Colour", "default": "#ff0000" }
+  ]
+}
+{% endschema %}
