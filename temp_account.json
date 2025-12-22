@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "variant": {
+    "type": "argent",
+    "version": 1,
+    "owner": "0x7d2ed640fa4634c2115751a24c909185d3ed60cb4d2499d5b5bdc043b3600b5",
+    "guardian": "0x0"
+  },
+  "deployment": {
+    "status": "deployed",
+    "class_hash": "0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f",
+    "address": "0x215fe25aa8fb847babff3c35ae6281c550c9decf17ec1d7b58f59b58b13f04c"
+  }
+}

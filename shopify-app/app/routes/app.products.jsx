@@ -52,16 +52,71 @@ export const loader = async ({ request }) => {
 
 // 2. Action: Handle "Enable Passport" click
 export const action = async ({ request }) => {
+  const { admin } = await authenticate.admin(request);
   const formData = await request.formData();
   const productId = formData.get("productId");
 
-  // Call Enlivora Backend to mint passport
-  // In real app: await fetch('https://api.enlivora.com/products/' + productId + '/enable-passport', ...)
-  
-  // Mock success response
-  return json({ success: true, productId, status: "active" });
-};
+  try {
+      // Call Enlivora Backend to mint passport
+      const backendUrl = process.env.BACKEND_URL || 'http://localhost:3000';
+      const response = await fetch(`${backendUrl}/products/${productId.split('/').pop()}/enable-passport`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+      });
 
+      if (!response.ok) {
+          throw new Error(`Backend API error: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      
+      // Update Shopify Metafield to indicate passport is active
+      await admin.graphql(
+        `#graphql
+        mutation storefrontMetadataCreate($metafields: [MetafieldsSetInput!]!) {
+          metafieldsSet(metafields: $metafields) {
+            metafields {
+              id
+              key
+              namespace
+              value
+            }
+            userErrors {
+              field
+              message
+            }
+          }
+        }`,
+        {
+          variables: {
+            metafields: [
+              {
+                ownerId: productId,
+                namespace: "enlivora",
+                key: "passport_active",
+                value: "true",
+                type: "boolean"
+              },
+              {
+                ownerId: productId,
+                namespace: "enlivora",
+                key: "token_id",
+                value: data.tokenId,
+                type: "single_line_text_field"
+              }
+            ]
+          }
+        }
+      );
+
+      // Return success data
+      return json({ ...data, status: "active" });
+
+  } catch (error) {
+      console.error("Enable Passport failed:", error);
+      return json({ success: false, error: error.message }, { status: 500 });
+  }
+};
 export default function ProductsPage() {
   const { products } = useLoaderData();
   const fetcher = useFetcher();
