@@ -28,7 +28,7 @@ export default function LoyaltyPage() {
       setLoading(true);
       const contract = new Contract(LOYALTY_ABI, LOYALTY_ADDRESS, provider);
       contract.balance_of(address)
-        .then((bal: bigint) => setBalance((bal / BigInt(10 ** 18)).toString()))
+        .then((bal: bigint) => setBalance(bal.toString()))
         .catch(() => setBalance('0'))
         .finally(() => setLoading(false));
     }
