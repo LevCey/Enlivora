@@ -77,7 +77,11 @@ export default function LoyaltyPage() {
         Earn points with every purchase. Non-transferable.
       </p>
 
-      <button onClick={() => disconnect()} className="btn" style={{ marginTop: '24px', background: '#333' }}>
+      <Link href="/redeem" className="btn" style={{ display: 'block', marginTop: '24px', background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)' }}>
+        💰 Redeem for STRK
+      </Link>
+
+      <button onClick={() => disconnect()} className="btn" style={{ marginTop: '12px', background: '#333' }}>
         Disconnect
       </button>
 
