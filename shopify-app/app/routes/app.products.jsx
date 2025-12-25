@@ -108,7 +108,7 @@ export const action = async ({ request }) => {
   // --- ENABLE PASSPORT LOGIC ---
   const productId = formData.get("productId");
   try {
-      const backendUrl = process.env.BACKEND_URL || 'http://localhost:3000';
+      const backendUrl = process.env.BACKEND_URL || 'https://api.enlivora.com';
       const response = await fetch(`${backendUrl}/products/${productId.split('/').pop()}/enable-passport`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' }
