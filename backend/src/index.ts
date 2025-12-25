@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import webhookRouter from './routes/webhooks_shopify';
 import rewardsRouter from './routes/rewards';
+import claimRouter from './routes/claim';
 import { StarknetService } from './services/starknet';
 
 dotenv.config();
@@ -14,6 +15,7 @@ app.use(express.json());
 // Register Routes
 app.use('/webhooks', webhookRouter);
 app.use('/rewards', rewardsRouter);
+app.use('/claim', claimRouter);
 
 app.get('/', (req, res) => {
   res.send('Enlivora Cloud Backend API');
