@@ -37,7 +37,13 @@ export default function Home() {
         </Link>
       </div>
 
-      <div style={{ marginTop: '32px', display: 'flex', justifyContent: 'center', gap: '24px', fontSize: '12px', color: '#666' }}>
+      <div style={{ marginTop: '16px' }}>
+        <Link href="/loyalty" className="btn" style={{ background: '#333' }}>
+          🎁 View Loyalty Points
+        </Link>
+      </div>
+
+      <div style={{ marginTop: '24px', display: 'flex', justifyContent: 'center', gap: '24px', fontSize: '12px', color: '#666' }}>
         <span>⚡ STARK Proven</span>
         <span>✓ Immutable</span>
       </div>
