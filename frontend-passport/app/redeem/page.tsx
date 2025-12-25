@@ -70,7 +70,7 @@ export default function RedeemPage() {
   if (!isConnected) {
     return (
       <div className="card" style={{ textAlign: 'center' }}>
-        <div style={{ fontSize: '48px', marginBottom: '16px' }}>💰</div>
+        <div style={{ fontSize: '48px', marginBottom: '16px' }}>⚡</div>
         <h1 className="title">Redeem Points</h1>
         <p className="subtitle">Connect wallet to redeem your ELP for STRK</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '24px' }}>
@@ -89,7 +89,7 @@ export default function RedeemPage() {
 
   return (
     <div className="card" style={{ textAlign: 'center' }}>
-      <div style={{ fontSize: '48px', marginBottom: '16px' }}>💰</div>
+      <div style={{ fontSize: '48px', marginBottom: '16px' }}>⚡</div>
       <h1 className="title">Redeem Points</h1>
 
       <div className="info-row">
