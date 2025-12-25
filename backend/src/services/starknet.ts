@@ -33,6 +33,17 @@ const contractAbi = [
     ],
     "outputs": [],
     "state_mutability": "external"
+  },
+  {
+    "type": "function",
+    "name": "transfer_from",
+    "inputs": [
+      { "name": "from", "type": "core::starknet::contract_address::ContractAddress" },
+      { "name": "to", "type": "core::starknet::contract_address::ContractAddress" },
+      { "name": "token_id", "type": "core::integer::u256" }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
   }
 ];
 
@@ -111,6 +122,34 @@ export class StarknetService {
 
         } catch (error) {
             console.error("Minting failed:", error);
+            throw error;
+        }
+    }
+
+    /**
+     * Transfers a Passport NFT from merchant to customer (claim)
+     */
+    async transferPassport(tokenId: string, toAddress: string) {
+        try {
+            console.log(`Transferring Token #${tokenId} to ${toAddress}...`);
+
+            const tx = await account.execute({
+                contractAddress: contractAddress,
+                entrypoint: "transfer_from",
+                calldata: CallData.compile({
+                    from: merchantAddress,
+                    to: toAddress,
+                    token_id: cairo.uint256(tokenId)
+                })
+            });
+
+            console.log("Transfer sent:", tx.transaction_hash);
+            await provider.waitForTransaction(tx.transaction_hash);
+            console.log("Transfer confirmed");
+
+            return tx.transaction_hash;
+        } catch (error) {
+            console.error("Transfer failed:", error);
             throw error;
         }
     }
