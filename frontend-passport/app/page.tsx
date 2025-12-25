@@ -38,7 +38,7 @@ export default function Home() {
       </div>
 
       <div style={{ marginTop: '16px' }}>
-        <Link href="/loyalty" className="btn" style={{ background: '#333' }}>
+        <Link href="/loyalty" className="btn" style={{ background: 'linear-gradient(135deg, #D4AF37 0%, #B8860B 100%)', color: '#000', fontWeight: 600 }}>
           🎁 View Loyalty Points
         </Link>
       </div>
