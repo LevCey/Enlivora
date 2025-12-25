@@ -5,7 +5,7 @@ export const PASSPORT_ADDRESS = '0x060691688c40f8b98fd8d23e9a2c9864ddece643cf195
 export const LOYALTY_ADDRESS = '0x0733ceef104572b040eef659f697a2d4931c13ac1446b103f0e0a9c4b7613841';
 
 export const provider = new RpcProvider({ 
-  nodeUrl: process.env.NEXT_PUBLIC_STARKNET_RPC_URL || 'https://free-rpc.nethermind.io/sepolia-juno/v0_7' 
+  nodeUrl: process.env.NEXT_PUBLIC_STARKNET_RPC_URL || 'https://rpc.starknet-testnet.lava.build' 
 });
 
 // Minimal ABI for read operations
