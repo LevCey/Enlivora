@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import webhookRouter from './routes/webhooks_shopify';
 import rewardsRouter from './routes/rewards';
@@ -10,6 +11,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
 
 // Register Routes
