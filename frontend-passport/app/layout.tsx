@@ -1,31 +1,34 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { StarknetProvider } from "./providers";
 
 export const metadata: Metadata = {
-  title: "Enlivora Passport Verify",
-  description: "Verify product authenticity on Starknet",
+  title: "Enlivora | Digital Passport",
+  description: "Blockchain-verified product authenticity on Starknet",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="min-h-screen bg-gray-50 text-gray-900">
-            <header className="p-4 border-b bg-white flex justify-between items-center">
-                <div className="font-bold text-xl tracking-tight">ENLIVORA</div>
-                <div className="text-xs text-gray-500 uppercase tracking-wider">Secure Commerce Layer</div>
+      <body>
+        <StarknetProvider>
+          <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%)' }}>
+            <header style={{ padding: '24px 32px', borderBottom: '1px solid #333' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', maxWidth: '1200px', margin: '0 auto' }}>
+                <span style={{ fontSize: '20px', fontWeight: 'bold', letterSpacing: '0.2em', color: '#D4AF37' }}>ENLIVORA</span>
+                <span style={{ fontSize: '12px', color: '#666' }}>🟢 Starknet Sepolia</span>
+              </div>
             </header>
-            <main className="max-w-md mx-auto p-4 pt-10">
-                {children}
+            
+            <main style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '32px' }}>
+              {children}
             </main>
-        </div>
+
+            <footer style={{ padding: '24px 32px', borderTop: '1px solid #333', textAlign: 'center' }}>
+              <p style={{ fontSize: '12px', color: '#666' }}>© 2025 Enlivora Protocol • Powered by Starknet</p>
+            </footer>
+          </div>
+        </StarknetProvider>
       </body>
     </html>
   );
