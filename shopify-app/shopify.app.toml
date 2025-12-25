@@ -24,7 +24,7 @@ api_version = "2024-01"
 
   [[webhooks.subscriptions]]
   topics = [ "orders/paid" ]
-  uri = "https://enlivora-backend.vercel.app/webhooks/orders/paid"
+  uri = "https://api.enlivora.com/webhooks/orders/paid"
 
 [pos]
 embedded = false
