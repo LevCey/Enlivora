@@ -192,12 +192,12 @@ enlivora/
 
 ---
 
-### 3.3 `RewardsVault` (Phase 1.2, Optional)
+### 3.3 `RewardsVault` (Phase 1.2)
 
-**Purpose:** Merchant funds a reward pool (USDC for stability, STRK for gas/ecosystem alignment). Customers redeem points for these tokens via signed permits.
+**Purpose:** Merchant funds a reward pool (STRK for gas/ecosystem alignment). Customers redeem points for STRK via the backend relayer.
 
 **Storage**
-- `supported_tokens: Map<ContractAddress, bool>` (whitelist: USDC, STRK)
+- `supported_tokens: Map<ContractAddress, bool>` (whitelist: STRK, future USDC)
 - `merchant_pool_balance: Map<(merchantId, tokenAddr), u256>`
 - `daily_cap: Map<(merchantId, tokenAddr), u256>`
 - `used_nonces: Map<(merchantId, userAddr), u256>`
@@ -278,11 +278,11 @@ enlivora/
 
 ### Phase 0 (Today) — Grant-ready PoC
 - [x] Implement `Passport721` + tests
-- [ ] Deploy to Sepolia (record contract address)
-- [ ] Mint 1 demo token via script
+- [x] Deploy to Sepolia (contract addresses in README)
+- [x] Mint demo tokens via script
 - [x] Build a minimal verify page reading `owner/status/product_hash`
 - [x] Add claim button (wallet connect + transfer)
-- [ ] Record a 2–3 minute demo video + update README
+- [ ] Record a 2–3 minute demo video
 
 ### Phase 1 (MVP) — Shopify Integration
 - [x] Shopify app OAuth install (Skeleton)
@@ -296,10 +296,10 @@ enlivora/
 - [ ] `refunds/*` webhook → debit points
 - [ ] Basic admin UI view points history
 
-### Phase 1.2 — Rewards (USDC / STRK)
-- [ ] Implement `RewardsVault` (Multi-Token)
-- [ ] Merchant deposit flow (support both tokens)
-- [ ] Customer redeem flow + limits
+### Phase 1.2 — Rewards (STRK)
+- [x] Implement `RewardsVault`
+- [x] Merchant deposit flow (STRK)
+- [x] Customer redeem flow + limits
 
 ---
 
