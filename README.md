@@ -13,6 +13,7 @@ Enlivora Commerce Pass is a Starknet-native infrastructure designed to bridge tr
 |---|---|
 | **Passport Portal** | [pass.enlivora.com](https://pass.enlivora.com) |
 | **Backend API** | [api.enlivora.com](https://api.enlivora.com) |
+| **Shopify Demo Store** | [enlivora.myshopify.com](https://enlivora.myshopify.com) *(password protected)* |
 
 ### Demo Video
 <!-- TODO: Replace with actual video link -->
