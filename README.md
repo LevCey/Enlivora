@@ -173,8 +173,8 @@ For a deeper dive into the technical implementation and roadmap, please refer to
 | Project | Achievement | Link |
 |---------|-------------|------|
 | **FashionSwap** | 🥈 2nd Place - Starknet Re{Solve} Hackathon | [GitHub](https://github.com/LevCey/FashionSwap) • [Devpost](https://devpost.com/software/fashionswap) |
+Winner Open Track – Starknet Foundation Prize Pool (2nd Place)
 
-Proven track record in Starknet ecosystem with Cairo smart contract development and dApp delivery.
 
 
 ## License
