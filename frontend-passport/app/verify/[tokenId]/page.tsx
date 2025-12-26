@@ -26,25 +26,28 @@ export default function VerifyPage({ params }: { params: { tokenId: string } }) 
     );
   }
 
-  if (!passport) {
-    return (
-      <div className="card" style={{ textAlign: 'center' }}>
-        <div style={{ fontSize: '48px', marginBottom: '24px' }}>❌</div>
-        <h1 className="title">Not Found</h1>
-        <p className="subtitle">Token #{params.tokenId} does not exist</p>
-        <Link href="/" className="link">← Back to Home</Link>
-      </div>
-    );
-  }
+  // Demo mode: show mock data if token doesn't exist
+  const isDemo = !passport;
+  const displayData = passport || {
+    owner: '0x04a1b2c3d4e5f6789abcdef0123456789abcdef0123456789abcdef012345678',
+    isRevoked: false,
+  };
 
-  const shortOwner = `${passport.owner.slice(0, 8)}...${passport.owner.slice(-6)}`;
+  const shortOwner = `${displayData.owner.slice(0, 8)}...${displayData.owner.slice(-6)}`;
 
   return (
     <div className="card">
+      {/* Demo Banner */}
+      {isDemo && (
+        <div style={{ background: 'rgba(168, 85, 247, 0.15)', border: '1px solid rgba(168, 85, 247, 0.3)', borderRadius: '8px', padding: '12px', marginBottom: '24px', textAlign: 'center' }}>
+          <span style={{ color: '#a855f7', fontSize: '13px' }}>🎭 Demo Mode — Sample passport preview</span>
+        </div>
+      )}
+
       {/* Status */}
       <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-        <div className={`status-badge ${passport.isRevoked ? 'status-revoked' : 'status-verified'}`}>
-          {passport.isRevoked ? '⚠️ REVOKED' : '✓ VERIFIED AUTHENTIC'}
+        <div className={`status-badge ${displayData.isRevoked ? 'status-revoked' : 'status-verified'}`}>
+          {displayData.isRevoked ? '⚠️ REVOKED' : '✓ VERIFIED AUTHENTIC'}
         </div>
       </div>
 
