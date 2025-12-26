@@ -17,6 +17,35 @@ Premium boutiques and Direct-to-Consumer (DTC) brands face significant challenge
 *   **Multi-Token Rewards:** A flexible vault system allowing customers to redeem points for stablecoins (USDC) or network tokens (STRK).
 *   **Gasless Experience:** Designed with Account Abstraction in mind to minimize Web3 friction for end-users.
 
+## Account Abstraction (AA)
+
+Enlivora leverages Starknet's native Account Abstraction to provide a seamless, gasless experience for end-users:
+
+### Current Implementation
+- **Backend-Sponsored Transactions:** All passport claims and loyalty point operations are signed and paid by the merchant's backend wallet. Customers never pay gas fees.
+- **Native AA Wallets:** Full support for Argent X and Braavos, which are native AA wallets on Starknet.
+- **Meta-Transactions:** The backend acts as a relayer, executing transactions on behalf of users.
+
+### How It Works
+```text
+Customer Action          Backend (Relayer)           Starknet
+      │                        │                        │
+      │  "Claim Passport"      │                        │
+      ├───────────────────────>│                        │
+      │                        │  Sign & Submit Tx      │
+      │                        │  (Pays Gas)            │
+      │                        ├───────────────────────>│
+      │                        │                        │  Execute
+      │                        │      Tx Confirmed      │
+      │      Success!          │<───────────────────────┤
+      │<───────────────────────┤                        │
+```
+
+### Benefits
+- **Zero Gas for Users:** Customers interact with blockchain without holding ETH/STRK
+- **Familiar UX:** Web2-like experience with Web3 security
+- **Merchant Control:** Businesses sponsor transactions as a customer acquisition cost
+
 ## System Architecture
 
 The system operates as a middleware between the Web2 e-commerce platform and the Starknet Layer 2 validity rollup.
