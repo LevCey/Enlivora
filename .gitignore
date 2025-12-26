@@ -40,4 +40,8 @@ shopify-app/prisma/migrations/
 .vscode/
 .idea/
 *.swp
-ss
+
+# Sensitive scripts (keystore extraction, etc.)
+**/extract_private_key*
+**/how_to_get_key*
+**/keystore*
