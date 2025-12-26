@@ -7,6 +7,12 @@
 
 Enlivora Commerce Pass is a Starknet-native infrastructure designed to bridge traditional e-commerce with blockchain transparency. It enables Shopify and WooCommerce merchants to issue digital product passports (NFTs) and onchain loyalty points without disrupting the existing user checkout experience.
 
+## 🏆 Team Background
+
+| Project | Achievement | Link |
+|---------|-------------|------|
+| **FashionSwap** | 🥈 2nd Place (Open Track) - Starknet Re{Solve} Hackathon | [GitHub](https://github.com/LevCey/FashionSwap) • [Devpost](https://devpost.com/software/fashionswap) |
+
 ## Live Demo
 
 | | Link |
