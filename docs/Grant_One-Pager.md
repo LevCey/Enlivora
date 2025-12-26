@@ -24,7 +24,7 @@ Premium/limited boutiques and DTC brands struggle to scale because:
 ### B) Onchain Loyalty Points + Optional USDC Rewards
 
 * When an order is completed, the customer receives **non-transferable onchain points**
-* Customers can optionally **redeem points for USDC** from a merchant-funded reward pool
+* Customers can optionally **redeem points for STRK** from a merchant-funded reward pool
 * Wallet friction is minimized: wallet connection is needed **only at claim/redeem**, reducing UX and phishing risk
 
 **No checkout replacement in MVP.** Shopify/Woo payments stay unchanged; we add a **passport + points + redeem** layer.
@@ -33,7 +33,7 @@ Premium/limited boutiques and DTC brands struggle to scale because:
 
 * **Account Abstraction** enables “gasless / Web2-like” claim & redeem flows
 * Onchain records make passport + loyalty **transparent, portable, and auditable**
-* **USDC rails** enable a clear, measurable payments adoption narrative (rewards, deposits later)
+* **STRK rails** enable a clear, measurable payments adoption narrative (rewards, deposits later)
 * Directly maps to ecosystem KPIs: **transactions, active users, USDC flow**
 
 ## 4) Product Architecture (MVP)
@@ -44,7 +44,7 @@ Premium/limited boutiques and DTC brands struggle to scale because:
 
   * `Passport721` (mint/claim/transfer/revoke)
   * `LoyaltyPoints` (credit/debit + redeem gating)
-  * `RewardsVault` (USDC reward pool + limits) *(optional in MVP, can be Phase 1.2)*
+  * `RewardsVault` (STRK reward pool + limits)
 
 ## 5) MVP Definition (smallest working demo) — Testnet Flow
 
@@ -52,13 +52,13 @@ Premium/limited boutiques and DTC brands struggle to scale because:
 2. Customer **Verify Passport** → view token data
 3. Customer **Claim** → passport ownership transfers
 4. Simulated `order/paid` → **points credited**
-5. *(Optional)* **Redeem USDC** → payout from the reward vault
+5. *(Optional)* **Redeem STRK** → payout from the reward vault
 
 ## 6) 8-Week Milestone Plan
 
 * **W1–W2:** Contracts v1 + Sepolia deploy + basic verify/claim demo
 * **W3–W4:** Shopify App MVP (products list + enable passport + order webhook)
-* **W5–W6:** LoyaltyPoints + RewardsVault (USDC) + redeem UI + limits/refund handling
+* **W5–W6:** LoyaltyPoints + RewardsVault (STRK) + redeem UI + limits/refund handling
 * **W7:** Pilot onboarding (≥1 merchant) + analytics + documentation
 * **W8:** Mainnet readiness plan + security review checklist + grant KPI report
 
@@ -67,7 +67,7 @@ Premium/limited boutiques and DTC brands struggle to scale because:
 * **Pilot merchants onboarded:** 2–5
 * **Passports minted/claimed/transferred:** target **200+ claims**
 * **Points credits / redeems:** target **300+ points tx**, **50+ redeems**
-* **USDC rewards distributed (optional):** target **$200–$1,000** (test)
+* **STRK rewards distributed:** target **$200–$1,000** (testnet equivalent)
 * **Activation → repeat purchase uplift:** baseline vs. post-launch (merchant-reported)
 
 ## 8) Go-to-Market (first 90 days)
@@ -82,8 +82,9 @@ Premium/limited boutiques and DTC brands struggle to scale because:
 
 ## 9) Why Us / Proof
 
-* Built and shipped a working Starknet hackathon project **FashionSwap** (foundation PoC + team credibility)
-* Repo: `https://github.com/LevCey/FashionSwap` *(or Enlivora repo link)*
+* Built and shipped **Enlivora Commerce Pass** with working Starknet Sepolia deployment
+* Live demo: `https://pass.enlivora.com` | API: `https://api.enlivora.com`
+* Repo: `https://github.com/LevCey/Enlivora-Commerce-Pass`
 
 ## 10) Funding Ask (example)
 
@@ -110,7 +111,7 @@ Enlivora Commerce Pass is a Starknet-native add-on for premium/limited boutiques
 1. Deploy Passport721 on Sepolia + verify/claim demo
 2. Shopify app MVP: product mapping + “Enable Passport”
 3. LoyaltyPoints v1 + order-paid webhook crediting
-4. (Optional) RewardsVault USDC + redeem UI + limits
+4. RewardsVault STRK + redeem UI + limits
 5. Pilot onboarding + analytics + mainnet readiness checklist
 
 ### 5 KPIs
@@ -119,7 +120,7 @@ Enlivora Commerce Pass is a Starknet-native add-on for premium/limited boutiques
 * # passports claimed
 * # passport transfers
 * # points credits / # redeems
-* $USDC rewards distributed (if enabled)
+* $STRK rewards distributed
 
 ### Budget line items (USD)
 
