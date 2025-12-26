@@ -1,20 +1,38 @@
 # Enlivora Commerce Pass
 
+![Starknet](https://img.shields.io/badge/Starknet-Sepolia-blue?logo=ethereum)
+![Cairo](https://img.shields.io/badge/Cairo-2.4+-orange)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)
+![License](https://img.shields.io/badge/License-MIT-green)
+
 Enlivora Commerce Pass is a Starknet-native infrastructure designed to bridge traditional e-commerce with blockchain transparency. It enables Shopify and WooCommerce merchants to issue digital product passports (NFTs) and onchain loyalty points without disrupting the existing user checkout experience.
+
+## 🚀 Live Demo
+
+| | Link |
+|---|---|
+| **Passport Portal** | [pass.enlivora.com](https://pass.enlivora.com) |
+| **Backend API** | [api.enlivora.com](https://api.enlivora.com) |
+
+### Demo Video
+<!-- TODO: Replace with actual video link -->
+[![Demo Video](https://img.shields.io/badge/▶_Watch_Demo-YouTube-red?logo=youtube)](https://youtube.com/watch?v=PLACEHOLDER)
+
+> 📹 *Video coming soon - shows full flow: mint → claim → loyalty → redeem*
 
 ## Problem & Solution
 
 Premium boutiques and Direct-to-Consumer (DTC) brands face significant challenges in scaling due to lack of trust in resale markets and fragmented loyalty systems.
 
 *   **Problem:** Buyers hesitate to purchase premium items due to authenticity concerns ("Is this real?"). Brands lose visibility and control once a product enters the secondary market.
-*   **Solution:** Enlivora creates an onchain "Digital Twin" for each physical product. This passport proves authenticity and ownership history. Additionally, an onchain loyalty system rewards customers with non-transferable points that can be redeemed for USDC or STRK, creating a verifiable and portable rewards ecosystem.
+*   **Solution:** Enlivora creates an onchain "Digital Twin" for each physical product. This passport proves authenticity and ownership history. Additionally, an onchain loyalty system rewards customers with non-transferable points that can be redeemed for STRK, creating a verifiable and portable rewards ecosystem.
 
 ## Key Features
 
 *   **Product Passport (ERC-721):** A mintable digital asset linked to physical inventory. Supports ownership transfer and revocation by the issuer.
 *   **Loyalty Ledger (Non-transferable Token):** An onchain points system where merchants can credit points based on fiat purchases (e.g., 10 points per $1).
 *   **Shopify Integration:** A native Shopify App that listens to `orders/paid` webhooks to automate minting and point crediting.
-*   **Multi-Token Rewards:** A flexible vault system allowing customers to redeem points for stablecoins (USDC) or network tokens (STRK).
+*   **Multi-Token Rewards:** A flexible vault system allowing customers to redeem points for network tokens (STRK).
 *   **Gasless Experience:** Designed with Account Abstraction in mind to minimize Web3 friction for end-users.
 
 ## Account Abstraction (AA)
