@@ -174,14 +174,6 @@ For a deeper dive into the technical implementation and roadmap, please refer to
 *   [Implementation Spec (MVP)](docs/SPEC.md)
 *   [Grant Proposal One-Pager](docs/Grant_One-Pager.md)
 
-### Developer Background
-
-| Project | Achievement | Link |
-|---------|-------------|------|
-| **FashionSwap** | 🥈 2nd Place - Starknet Re{Solve} Hackathon | [GitHub](https://github.com/LevCey/FashionSwap) • [Devpost](https://devpost.com/software/fashionswap) |
-Winner Open Track – Starknet Foundation Prize Pool (2nd Place)
-
-
 
 ## License
 
