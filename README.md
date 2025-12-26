@@ -16,10 +16,7 @@ Enlivora Commerce Pass is a Starknet-native infrastructure designed to bridge tr
 | **Shopify Demo Store** | [enlivora.myshopify.com](https://enlivora.myshopify.com) *(password protected)* |
 
 ### Demo Video
-<!-- TODO: Replace with actual video link -->
-[![Demo Video](https://img.shields.io/badge/▶_Watch_Demo-YouTube-red?logo=youtube)](https://youtube.com/watch?v=PLACEHOLDER)
-
-> 📹 *Video coming soon - shows full flow: mint → claim → loyalty → redeem*
+[![Demo Video](https://img.shields.io/badge/▶_Watch_Demo-YouTube-red?logo=youtube)](https://youtu.be/wiz-aDqC17w)
 
 ## Screenshots
 
