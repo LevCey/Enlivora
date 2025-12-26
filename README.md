@@ -20,6 +20,14 @@ Enlivora Commerce Pass is a Starknet-native infrastructure designed to bridge tr
 
 > 📹 *Video coming soon - shows full flow: mint → claim → loyalty → redeem*
 
+## 📸 Screenshots
+
+![Demo Flow](docs/screenshots/demo.gif)
+
+| Home | Loyalty | Redeem | Verify |
+|:---:|:---:|:---:|:---:|
+| ![Home](docs/screenshots/01-home.png) | ![Loyalty](docs/screenshots/02-loyalty.png) | ![Redeem](docs/screenshots/03-redeem.png) | ![Verify](docs/screenshots/04-verify.png) |
+
 ## Problem & Solution
 
 Premium boutiques and Direct-to-Consumer (DTC) brands face significant challenges in scaling due to lack of trust in resale markets and fragmented loyalty systems.
