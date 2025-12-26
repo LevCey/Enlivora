@@ -24,9 +24,9 @@ Enlivora Commerce Pass is a Starknet-native infrastructure designed to bridge tr
 
 ![Demo Flow](docs/screenshots/demo.gif)
 
-| Home | Loyalty | Redeem | Verify |
+| Home | Loyalty | Redeem | Claim |
 |:---:|:---:|:---:|:---:|
-| ![Home](docs/screenshots/01-home.png) | ![Loyalty](docs/screenshots/02-loyalty.png) | ![Redeem](docs/screenshots/03-redeem.png) | ![Verify](docs/screenshots/04-verify.png) |
+| ![Home](docs/screenshots/01-home.png) | ![Loyalty](docs/screenshots/02-loyalty.png) | ![Redeem](docs/screenshots/03-redeem.png) | ![Claim](docs/screenshots/04-claim.png) |
 
 ## Problem & Solution
 
