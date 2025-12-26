@@ -7,7 +7,7 @@
 
 Enlivora Commerce Pass is a Starknet-native infrastructure designed to bridge traditional e-commerce with blockchain transparency. It enables Shopify and WooCommerce merchants to issue digital product passports (NFTs) and onchain loyalty points without disrupting the existing user checkout experience.
 
-## 🚀 Live Demo
+## Live Demo
 
 | | Link |
 |---|---|
@@ -21,7 +21,7 @@ Enlivora Commerce Pass is a Starknet-native infrastructure designed to bridge tr
 
 > 📹 *Video coming soon - shows full flow: mint → claim → loyalty → redeem*
 
-## 📸 Screenshots
+## Screenshots
 
 ![Demo Flow](docs/screenshots/demo.gif)
 
