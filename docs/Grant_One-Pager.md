@@ -84,7 +84,7 @@ Premium/limited boutiques and DTC brands struggle to scale because:
 
 * Built and shipped **Enlivora Commerce Pass** with working Starknet Sepolia deployment
 * Live demo: `https://pass.enlivora.com` | API: `https://api.enlivora.com`
-* Repo: `https://github.com/LevCey/Enlivora-Commerce-Pass`
+* Repo: `https://github.com/LevCey/Enlivora`
 
 ## 10) Funding Ask (example)
 
