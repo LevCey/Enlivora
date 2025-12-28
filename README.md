@@ -115,9 +115,9 @@ This repository follows a monorepo structure:
 
 | Contract | Address | Explorer Link |
 | :--- | :--- | :--- |
-| **LoyaltyPoints (ELP)** | `0x0733ceef104572b040eef659f697a2d4931c13ac1446b103f0e0a9c4b7613841` | [StarkScan](https://sepolia.starkscan.co/contract/0x0733ceef104572b040eef659f697a2d4931c13ac1446b103f0e0a9c4b7613841) |
-| **Passport721 (ENL)** | `0x060691688c40f8b98fd8d23e9a2c9864ddece643cf195a095e8b9d6d54210839` | [StarkScan](https://sepolia.starkscan.co/contract/0x060691688c40f8b98fd8d23e9a2c9864ddece643cf195a095e8b9d6d54210839) |
-| **RewardsVault** | `0x02d647fa20fbe4cd177364953bf1b7057135f5712380c1477fb4328f1c67fc96` | [StarkScan](https://sepolia.starkscan.co/contract/0x02d647fa20fbe4cd177364953bf1b7057135f5712380c1477fb4328f1c67fc96) |
+| **LoyaltyPoints (ELP)** | `0x06873cd3080ec8e7789fd7770239e38ffffcdd1ca22486edd0b1d64edda21af9` | [StarkScan](https://sepolia.starkscan.co/contract/0x06873cd3080ec8e7789fd7770239e38ffffcdd1ca22486edd0b1d64edda21af9) |
+| **Passport721 (ENL)** | `0x06aba07f78f114a0d554605928d25a4994cc48c57c0ee5a77fa52f68ffa7b54d` | [StarkScan](https://sepolia.starkscan.co/contract/0x06aba07f78f114a0d554605928d25a4994cc48c57c0ee5a77fa52f68ffa7b54d) |
+| **RewardsVault** | `0x076622de18a7935347b9c9306c836108d088f114a9521562501e1f6885a26f1e` | [StarkScan](https://sepolia.starkscan.co/contract/0x076622de18a7935347b9c9306c836108d088f114a9521562501e1f6885a26f1e) |
 
 ## Prerequisites
 
