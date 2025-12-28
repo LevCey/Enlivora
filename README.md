@@ -168,6 +168,28 @@ npm install
 npm run dev
 ```
 
+## Roadmap
+
+### ✅ Phase 1: MVP (Completed)
+- [x] Product Passport (ERC-721) smart contract
+- [x] Loyalty Points (non-transferable) smart contract
+- [x] RewardsVault for multi-token redemption
+- [x] Shopify App with webhook integration
+- [x] Customer portal for passport claims
+- [x] Gasless transactions via backend relayer
+- [x] Sepolia testnet deployment
+
+### 🔄 Phase 2: Q1 2025
+- [ ] **Affiliate System with USDC Payouts** — Onchain referral tracking and automated commission payments in stablecoins
+- [ ] WooCommerce plugin integration
+- [ ] Multi-merchant support (SaaS model)
+- [ ] Starknet Mainnet deployment
+
+### 🔮 Phase 3: Q2-Q3 2025
+- [ ] Secondary market integration (passport transfers)
+- [ ] Advanced analytics dashboard for merchants
+- [ ] Mobile app for customers
+
 ## Documentation
 
 For a deeper dive into the technical implementation and roadmap, please refer to the `docs/` directory:
