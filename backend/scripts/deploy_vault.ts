@@ -22,8 +22,8 @@ async function main() {
 
     // Load compiled contract
     const contractPath = path.join(__dirname, '../../contracts/target/dev');
-    const sierraPath = path.join(contractPath, 'enlivora_RewardsVault.contract_class.json');
-    const casmPath = path.join(contractPath, 'enlivora_RewardsVault.compiled_contract_class.json');
+    const sierraPath = path.join(contractPath, 'enlivora_contracts_RewardsVault.contract_class.json');
+    const casmPath = path.join(contractPath, 'enlivora_contracts_RewardsVault.compiled_contract_class.json');
 
     if (!fs.existsSync(sierraPath) || !fs.existsSync(casmPath)) {
         throw new Error("Contract files not found. Run 'scarb build' first.");
