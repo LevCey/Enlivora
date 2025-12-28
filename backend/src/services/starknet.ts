@@ -15,7 +15,11 @@ const contractAddress = process.env.PASSPORT_721_ADDRESS || "";
 const loyaltyContractAddress = process.env.LOYALTY_POINTS_ADDRESS || "";
 const rewardsContractAddress = process.env.REWARDS_CONTRACT_ADDRESS || "";
 
-const account = new Account(provider, merchantAddress, privateKey);
+const account = new Account({
+    provider,
+    address: merchantAddress,
+    signer: privateKey
+});
 
 // ABI snippet for the mint function (simplified for direct use)
 const contractAbi = [
@@ -161,7 +165,11 @@ export class StarknetService {
                 throw new Error("LOYALTY_CONTRACT_ADDRESS not configured");
             }
 
-            const contract = new Contract(loyaltyAbi, loyaltyContractAddress, account);
+            const contract = new Contract({
+                abi: loyaltyAbi,
+                address: loyaltyContractAddress,
+                providerOrAccount: account
+            });
 
             const reasonHash = "0x1"; // Mock hash
 
@@ -194,7 +202,11 @@ export class StarknetService {
             }
 
             // 1. Debit Points
-            const loyaltyContract = new Contract(loyaltyAbi, loyaltyContractAddress, account);
+            const loyaltyContract = new Contract({
+                abi: loyaltyAbi,
+                address: loyaltyContractAddress,
+                providerOrAccount: account
+            });
             
             const rewardIdHash = "0x99"; // Mock reward ID
 
@@ -210,7 +222,11 @@ export class StarknetService {
             await provider.waitForTransaction(debitTx.transaction_hash);
 
             // 2. Send Reward
-            const rewardsContract = new Contract(rewardsAbi, rewardsContractAddress, account);
+            const rewardsContract = new Contract({
+                abi: rewardsAbi,
+                address: rewardsContractAddress,
+                providerOrAccount: account
+            });
 
             console.log("Step 2: Sending reward tokens...");
             const rewardTx = await rewardsContract.redeem_rewards(
