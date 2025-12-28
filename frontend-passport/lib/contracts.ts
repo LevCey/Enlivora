@@ -1,8 +1,8 @@
 import { RpcProvider, Contract } from 'starknet';
 
 // Sepolia Testnet
-export const PASSPORT_ADDRESS = '0x060691688c40f8b98fd8d23e9a2c9864ddece643cf195a095e8b9d6d54210839';
-export const LOYALTY_ADDRESS = '0x0733ceef104572b040eef659f697a2d4931c13ac1446b103f0e0a9c4b7613841';
+export const PASSPORT_ADDRESS = '0x06aba07f78f114a0d554605928d25a4994cc48c57c0ee5a77fa52f68ffa7b54d';
+export const LOYALTY_ADDRESS = '0x06873cd3080ec8e7789fd7770239e38ffffcdd1ca22486edd0b1d64edda21af9';
 
 export const provider = new RpcProvider({ 
   nodeUrl: process.env.NEXT_PUBLIC_STARKNET_RPC_URL || 'https://rpc.starknet-testnet.lava.build' 

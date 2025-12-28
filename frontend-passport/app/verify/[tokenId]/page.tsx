@@ -71,12 +71,12 @@ export default function VerifyPage({ params }: { params: { tokenId: string } }) 
       <div className="info-row">
         <span className="info-label">Contract</span>
         <a 
-          href="https://sepolia.starkscan.co/contract/0x060691688c40f8b98fd8d23e9a2c9864ddece643cf195a095e8b9d6d54210839"
+          href="https://sepolia.starkscan.co/contract/0x06aba07f78f114a0d554605928d25a4994cc48c57c0ee5a77fa52f68ffa7b54d"
           target="_blank"
           className="link"
           style={{ fontSize: '12px', fontFamily: 'monospace' }}
         >
-          0x0606...0839 ↗
+          0x06ab...b54d ↗
         </a>
       </div>
 
