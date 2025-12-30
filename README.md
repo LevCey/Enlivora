@@ -180,7 +180,7 @@ npm run dev
 - [x] Sepolia testnet deployment
 
 ### 🔄 Phase 2: Q1 2025
-- [ ] Influencer Attribution (Coupons + Referral Links) Unique creator codes/links with onchain campaign rules and verifiable redemption events; reporting via indexed events in the merchant dashboard (offchain).
+- [ ] Coupon-Based Influencer Affiliate — Unique creator coupon codes with simple commission rules and verifiable redemption events.
 - [ ] WooCommerce plugin integration
 - [ ] Multi-merchant support (SaaS model)
 - [ ] Starknet Mainnet deployment
