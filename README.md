@@ -180,7 +180,6 @@ npm run dev
 - [x] Sepolia testnet deployment
 
 ### 🔄 Phase 2: Q1 2025
-- [ ] **Affiliate System with USDC Payouts** — Onchain referral tracking and automated commission payments in stablecoins
 - [ ] WooCommerce plugin integration
 - [ ] Multi-merchant support (SaaS model)
 - [ ] Starknet Mainnet deployment
