@@ -180,6 +180,7 @@ npm run dev
 - [x] Sepolia testnet deployment
 
 ### 🔄 Phase 2: Q1 2025
+- [ ] Coupon Affiliate MVP — Creator coupon codes with onchain tracking events and commission rules; analytics in the merchant dashboard.
 - [ ] WooCommerce plugin integration
 - [ ] Multi-merchant support (SaaS model)
 - [ ] Starknet Mainnet deployment
