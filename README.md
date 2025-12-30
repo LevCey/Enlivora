@@ -179,13 +179,13 @@ npm run dev
 - [x] Gasless transactions via backend relayer
 - [x] Sepolia testnet deployment
 
-### 🔄 Phase 2: Q1 2025
+### 🔄 Phase 2: Q1 2026
 - [ ] Coupon-Based Influencer Affiliate — Unique creator coupon codes with simple commission rules and verifiable redemption events.
 - [ ] WooCommerce plugin integration
 - [ ] Multi-merchant support (SaaS model)
 - [ ] Starknet Mainnet deployment
 
-### 🔮 Phase 3: Q2-Q3 2025
+### 🔮 Phase 3: Q2-Q3 2026
 - [ ] Secondary market integration (passport transfers)
 - [ ] Advanced analytics dashboard for merchants
 - [ ] Mobile app for customers
